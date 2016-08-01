@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Tally Printer",
+  "name": "Point of Tickets",
   "description": "Chrome Extension for Printing Software Tickets on Receipt Paper",
   "version": "0.0.1",
 
