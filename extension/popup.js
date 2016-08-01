@@ -7,12 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
   var printStatus = document.getElementById('print-status');
   printButton.onclick = function() {
 
+    printStatus.textContent = "Loading ticket...";
+
     // regardless of what page we're on, it'll be this function
     var ticketCode = {code: "scrapeTicket()"};
 
     // build our ticket
     chrome.tabs.executeScript(undefined, ticketCode, function(ticket) {
       var postTicket = ticket[0];
+      printStatus.textContent = "Sending ticket to server...";
 
       // build the ajax request to the webserver with our ticket
       var xhr = new XMLHttpRequest();

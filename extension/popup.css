@@ -1,0 +1,28 @@
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-size: 100%;
+  min-width: 200px;
+  text-align: center;
+}
+
+#title {
+  font-size: 20px;
+}
+
+#print-button {
+  color: #ffffff;
+  background-color: #ff7518;
+  border-color: #ff7518;
+  border-radius: 15px;
+  max-width: 100px;
+  margin: auto;
+  height: 30px;
+  padding-top: 10px;
+  font-weight: 700;
+}
+
+#print-status {
+  color: grey;
+  font-style: italic;
+  padding-top: 10px;
+}
