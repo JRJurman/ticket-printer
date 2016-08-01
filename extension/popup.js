@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // build the ajax request to the webserver with our ticket
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://localhost:3000", true);
+      xhr.open("POST", "http://192.168.1.16:3000", true);
       xhr.setRequestHeader("Content-type", "application/json");
 
       // send the collected data as JSON

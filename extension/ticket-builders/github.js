@@ -15,9 +15,9 @@ function scrapeTicket() {
 
   // pull repo header
   // we pull out the two links at the top of the page, the user, and the repo
-  var repoLinks = document.querySelectorAll(".repohead-details-container > h1 > * > a");
-  var user = repoLinks[0].textContent;
-  var repo = repoLinks[1].textContent;
+  var projectLinks = document.querySelectorAll(".repohead-details-container > h1 > * > a");
+  var user = projectLinks[0].textContent;
+  var repo = projectLinks[1].textContent;
 
   // pull description body, which in this case, is the first comment
   var bodyDOM = document.getElementsByClassName("comment-body")[0];
@@ -25,7 +25,7 @@ function scrapeTicket() {
 
   // build the ticket object
   var ticket = {
-    repo: user + "/" + repo,
+    project: user + "/" + repo,
     title: title,
     number: number,
     body: body

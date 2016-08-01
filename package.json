@@ -2,22 +2,26 @@
   "name": "point-of-tickets",
   "version": "0.0.1",
   "description": "Chrome Extension & Web Server for Printing Software Tickets on Receipt Paper",
-  "main": "webserver/app.js",
   "scripts": {
-    "start": "node webserver/app.js",
+    "start": "t2 run webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JRJurman/point-of-tickets.git"
   },
-  "author": "",
+  "author": {
+    "name": "Jesse Jurman",
+    "email": "j.r.jurman@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JRJurman/point-of-tickets/issues"
   },
   "homepage": "https://github.com/JRJurman/point-of-tickets#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "tessel-thermalprinter": "^0.3.0"
   }
 }
