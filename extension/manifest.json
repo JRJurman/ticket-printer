@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Tally Printer",
+  "description": "Chrome Extension for Printing Software Tickets on Receipt Paper",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["ticket-builders/github.js"]
+    }
+  ],
+
+  "permissions": [
+    "activeTab"
+  ]
+}

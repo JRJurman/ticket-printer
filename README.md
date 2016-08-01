@@ -1,2 +1,2 @@
-# ticket-pusher
-Push tickets from URLs to Receipt Paper! 
+# Point of Tickets
+Chrome Extension & Web Server for Printing Software Tickets on Receipt Paper
