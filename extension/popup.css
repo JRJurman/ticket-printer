@@ -9,6 +9,12 @@ body {
   font-size: 20px;
 }
 
+#location {
+  margin: 10px;
+  width: 120px;
+  text-align: center;
+}
+
 #print-button {
   color: #ffffff;
   background-color: #ff7518;
@@ -21,7 +27,7 @@ body {
   font-weight: 700;
 }
 
-#print-status {
+#status {
   color: grey;
   font-style: italic;
   padding-top: 10px;
