@@ -20,7 +20,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.post('/', function (req, res, next) {
+app.get('/ping', function(req, res) {
+  res.sendStatus(204);
+});
+
+app.post('/print', function (req, res, next) {
 
   // validate the ticket exists, and has the things we want
   var ticket = req.body;
@@ -40,17 +44,32 @@ app.post('/', function (req, res, next) {
     .printLine(" " + ticket.project + " ")
     .inverse(false)
     .lineFeed(1)
-    .big(true)
-    .printLine(ticket.title + ticket.number)
-    .big(false)
+    .bold(true)
+    .printLine(ticket.title + " " + ticket.number)
+    .bold(false)
     .lineFeed(1)
+    .left(true)
     .printLine(ticket.body)
-    .lineFeed(10)
+    .lineFeed(7)
     .print(function() {});
 
 });
 
 app.listen(3000, function () {
   var ip = os.networkInterfaces().wlan0[0].address;
-  console.log('Example app listening on port '+ip+':3000/');
+  console.log('Point of Tickets listening on '+ip+':3000');
+
+  // sometimes, we might not have a console, so this will work too
+  printer.on('ready', function(){
+    printer
+        .center()
+        .horizontalLine(16)
+        .printLine('Point of Tickets')
+        .printLine('listening on:')
+        .inverse(true)
+        .printLine(' '+ip+':3000 ')
+        .inverse(false)
+        .lineFeed(5)
+        .print(function(){});
+  });
 });
