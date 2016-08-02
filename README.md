@@ -59,4 +59,10 @@ check the website: https://tessel.io/
 The Mini Thermal Receipt Printer is a tiny receipt printer, similar to what you
 would see in any shop or restaurant. It uses no ink, and prints on special
 receipt paper. For more information, check the website:
-https://www.adafruit.com/products/597   
+https://www.adafruit.com/products/597  
+
+## Related Projects
+- Ticket Printer, my first attempt at this:
+https://github.com/JRJurman/ticket-printer
+- Tessel Thermal Printer, the inspiration for all of this:
+https://github.com/zaccolley/tessel-thermalprinter
