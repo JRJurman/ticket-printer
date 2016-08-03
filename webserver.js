@@ -1,3 +1,6 @@
+// webserver.js
+// a webserver that exposes endpoints to trigger the printer
+
 // webserver dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -14,16 +17,19 @@ var thermalprinter = require('tessel-thermalprinter');
 // setup printer
 var printer = thermalprinter.use(tessel.port['A']);
 
+// allow cross origin requests for our print endpoint
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
+// make sure we have the right server
 app.get('/ping', function(req, res) {
   res.sendStatus(204);
 });
 
+// print endpoint that triggers a print
 app.post('/print', function (req, res, next) {
 
   // validate the ticket exists, and has the things we want
@@ -36,7 +42,7 @@ app.post('/print', function (req, res, next) {
     next();
   }
 
-  // print the ticket on post request
+  // print the JSON
   printer
     .center()
     .horizontalLine(32)
@@ -55,6 +61,7 @@ app.post('/print', function (req, res, next) {
 
 });
 
+// Start the server, and print our address on the network
 app.listen(3000, function () {
   var ip = os.networkInterfaces().wlan0[0].address;
   console.log('Point of Tickets listening on '+ip+':3000');
