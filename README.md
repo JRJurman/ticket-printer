@@ -34,11 +34,15 @@ in the root of the directory.
 npm start
 ```
 
-If everything is working, the printer should print the Tessel's IP Address.
+If everything is working, the printer should print the Tessel's IP Address. If
+the printer does not appear to print anything, try running the example from the
+tessel-thermalprinter project, just to make sure everything is up and running.  
+https://github.com/zaccolley/tessel-thermalprinter
+
 
 ### Printing a ticket
 Now simply go to a github issue page, and click on the chrome extension. Type in
-the IP address that the Tessel printed out after running the webserver, and hit
+the IP address that the Tessel printed out after starting the webserver, and hit
 enter.  
 
 The dialog should say "Server Ready!" If the bottom has three dots "...",
