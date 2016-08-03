@@ -6,6 +6,39 @@ This project is a combination chrome extension and web server that allows
 users to print a ticket that they are looking at on their browser. The web
 server runs on a Tessel 2, which is connected to a Thermal Printer.
 
+## Local Installation
+These are the steps to install the project on your local machine.
+
+### Download
+To install and run this project, you need to download it, and install the node
+dependencies. Run the following command in the root of the project.
+```
+npm install
+```
+
+You'll also need to setup your Tessel 2, and install the Tessel 2 command line
+interface, `t2-cli`. You can find all these instructions here:
+https://tessel.github.io/t2-start/index.html
+
+The `npm start` script included will kick off a `t2 run`, so installing the cli,
+either globally or into the project, is important.
+
+### Installing the Chrome Extension
+To attach the chrome extension to your browser, open Google Chrome, and navigate
+to `chrome://extensions/`. Select `Load unpacked extension`, and then select the
+extensions directory in this project.
+
+### Running the Webserver
+After connecting the Mini Thermal Printer to the Tessel, with ground connected
+to GND, and the Yellow RX cable connected to port 5, it is possible to kick off
+the webserver. Simply run the following command, which runs the `webserver.js`
+in the root of the directory.
+```
+npm start
+```
+
+If everything is working, the printer should print the Tessel's IP Address.
+
 ## Architecture Design
 ![Architecture Design](design/Point-of-Tickets-Architecture.png)
 
@@ -61,8 +94,12 @@ would see in any shop or restaurant. It uses no ink, and prints on special
 receipt paper. For more information, check the website:
 https://www.adafruit.com/products/597  
 
+## Contributing
+If you would like to help or suggest something for the project, feel free to
+create a git issue, or fork the project and make a PR.
+
 ## Related Projects
-- Ticket Printer, my first attempt at this:
+- Ticket Printer, a different approach to printing tickets:
 https://github.com/JRJurman/ticket-printer
 - Tessel Thermal Printer, the inspiration for all of this:
 https://github.com/zaccolley/tessel-thermalprinter
