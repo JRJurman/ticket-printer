@@ -72,11 +72,15 @@ That is to say, github will only load the github scraper, and JIRA will only
 load the JIRA scraper, and so on...
 
 ### Ticket (JSON)
-Simple javascript object. It has the following fields:
-- title
-- number
-- project
-- body
+Simple javascript object. An example ticket:
+```javascript
+{
+  "project": "jrjurman/potato-factory",
+  "title": "Missing Potatoes",
+  "number": "#15",
+  "body": "As a user, I would like more potatoes, so that I..."
+}
+```
 
 ### Popover
 The Popover is the dialog that shows up when you click on the chrome extension.
