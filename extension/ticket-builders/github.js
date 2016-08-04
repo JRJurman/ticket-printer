@@ -3,8 +3,6 @@
 
 function scrapeTicket() {
 
-  console.log("Getting github ticket");
-
   // pull title
   var titleDOM = document.getElementsByClassName("js-issue-title")[0];
   var title = titleDOM.textContent.trim();
@@ -30,8 +28,6 @@ function scrapeTicket() {
     number: number,
     body: body
   }
-
-  console.log(ticket);
 
   return ticket;
 
