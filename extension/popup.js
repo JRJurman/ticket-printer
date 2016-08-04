@@ -26,8 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // send the collected data as JSON
       pingRequest.send();
 
-      pingRequest.onloadend = function () {
-        status.textContent = "Server Ready!"
+      pingRequest.onload = function () {
+        if (pingRequest.status === 203) {
+          status.textContent = "Server Ready!";
+        }
+        else {
+          status.textContent = "Could not connect :(";
+        }
       };
     }
   };
@@ -53,8 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // send the collected data as JSON
       printRequest.send(JSON.stringify(postTicket));
 
-      printRequest.onloadend = function () {
-        status.textContent = "Printing..."
+      printRequest.onload = function () {
+        if (pingRequest.status === 203) {
+          status.textContent = "Printing!";
+        }
+        else {
+          status.textContent = "Could not connect :(";
+        }
       };
 
     });
