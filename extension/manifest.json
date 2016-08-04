@@ -12,12 +12,8 @@
 
   "content_scripts": [
     {
-      "matches": ["https://github.com/*", "https://github.*"],
+      "matches": ["https://github.com/*"],
       "js": ["ticket-builders/github.js"]
-    },
-    {
-      "matches": ["https://github.com/*", "https://jira.*"],
-      "js": ["ticket-builders/jira.js"]
     }
   ],
 
