@@ -1,21 +1,49 @@
 // webserver.js
 // a webserver that exposes endpoints to trigger the printer
 
+// network dependency
+var os = require('os');
+
+// figure out what network we're on, so we can display it to the user
+var networks = os.networkInterfaces();
+// flatten all the possible address into one array
+var addresses = Object.keys(networks).reduce(function(addrs, interface) {
+  // add all the address we found on this interface to the list of addresses
+  return addrs.concat(networks[interface].map(function(i) {return i.address;}));
+}, []);
+
+// regex to find the one true ip address
+var ipLike = /\d+\.\d+.\d+.\d+/
+var ip = addresses.filter(function(address) {
+  return (ipLike.test(address) && address !== "127.0.0.1");
+})[0];
+
 // webserver dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-var os = require('os');
 
 // setup webserver
 var app = express();
 app.use(bodyParser.json());
 
 // printing dependencies
-var tessel = require('tessel');
-var thermalprinter = require('tessel-thermalprinter');
+var printer;
 
-// setup printer
-var printer = thermalprinter.use(tessel.port['A']);
+// try to pull in tessel packages
+try {
+  var tessel = require('tessel');
+  var thermalprinter = require('tessel-thermalprinter');
+
+  // setup printer
+  printer = thermalprinter.use(tessel.port['A']);
+}
+catch(e) {
+  console.warn("couldn't find tessel packages...");
+  console.warn("if you're testing, this is perfectly normal.");
+
+  // if we're testing, or don't have a tessel, fall back on the console
+  printer = require('./src/consolePrinter.js');
+}
 
 // allow cross origin requests for our print endpoint
 app.use(function(req, res, next) {
@@ -61,22 +89,24 @@ app.post('/print', function (req, res, next) {
 
 });
 
-// Start the server, and print our address on the network
-app.listen(3000, function () {
-  var ip = os.networkInterfaces().wlan0[0].address;
-  console.log('Point of Tickets listening on '+ip+':3000');
+// Start the server
+var port = 3000;
+app.listen(port, function () {
+
+  // log what our ip is on the console
+  console.log('Point of Tickets listening on '+ip+':'+port);
 
   // sometimes, we might not have a console, so this will work too
   printer.on('ready', function(){
     printer
-        .center()
-        .horizontalLine(16)
-        .printLine('Point of Tickets')
-        .printLine('listening on:')
-        .inverse(true)
-        .printLine(' '+ip+':3000 ')
-        .inverse(false)
-        .lineFeed(5)
-        .print(function(){});
+      .center()
+      .horizontalLine(16)
+      .printLine('Point of Tickets')
+      .printLine('listening on:')
+      .inverse(true)
+      .printLine(' '+ip+':'+port+' ')
+      .inverse(false)
+      .lineFeed(5)
+      .print(function(){});
   });
 });

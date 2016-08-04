@@ -4,6 +4,7 @@
   "description": "Chrome Extension & Web Server for Printing Software Tickets on Receipt Paper",
   "scripts": {
     "start": "t2 run webserver.js",
+    "console": "node webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
