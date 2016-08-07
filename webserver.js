@@ -42,7 +42,7 @@ catch(e) {
   console.warn("if you're testing, this is perfectly normal.");
 
   // if we're testing, or don't have a tessel, fall back on the console
-  printer = require('./src/consolePrinter.js');
+  printer = require('./src/console-printer.js');
 }
 
 // allow cross origin requests for our print endpoint
