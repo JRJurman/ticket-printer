@@ -3,7 +3,7 @@
 
   "name": "Point of Tickets",
   "description": "Chrome Extension for Printing Software Tickets on Receipt Paper",
-  "version": "0.0.1",
+  "version": "1.0.0",
 
   "browser_action": {
     "default_icon": "icon.png",

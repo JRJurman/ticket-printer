@@ -52,6 +52,22 @@ error logs that might exist.
 If the dialog says "Server Ready!", then you can safely hit the "Print" button,
 and see the fruits of your hard labor!
 
+If you want to use the other ticket builders (in the
+`extension/ticket-builders` folder) just add a matcher to the `manifest.json`
+and reload the script on your client. For example:  
+```javascript
+"content_scripts": [
+  {
+    "matches": ["https://jira.potato-factory.com/*"],
+    "js": ["ticket-builders/jira.js"]
+  },
+  // .. other matchers
+],
+```
+
+For more help with what matchers you can use, check out:
+https://developer.chrome.com/extensions/match_patterns
+
 ## Architecture Design
 ![Architecture Design](design/Point-of-Tickets-Architecture.png)
 

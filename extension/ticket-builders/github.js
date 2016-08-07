@@ -3,8 +3,6 @@
 
 function scrapeTicket() {
 
-  console.log("Getting github ticket");
-
   // pull title
   var titleDOM = document.getElementsByClassName("js-issue-title")[0];
   var title = titleDOM.textContent.trim();
@@ -23,15 +21,23 @@ function scrapeTicket() {
   var bodyDOM = document.getElementsByClassName("comment-body")[0];
   var body = bodyDOM.textContent.trim();
 
+  // pull author of issue / PR
+  var authorDOM = document.getElementsByClassName("author")[1];
+  var author = authorDOM.textContent.trim();
+
+  // pull the created on time
+  var createdDOM = document.getElementsByTagName("relative-time")[0];
+  var created = new Date(createdDOM.getAttribute("datetime"));
+
   // build the ticket object
   var ticket = {
     project: user + "/" + repo,
     title: title,
     number: number,
-    body: body
+    body: body,
+    author: author,
+    created: created.toLocaleDateString()
   }
-
-  console.log(ticket);
 
   return ticket;
 
