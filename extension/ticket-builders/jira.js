@@ -15,7 +15,6 @@ function scrapeTicket() {
   var projectDOM = document.getElementById("project-name-val");
   var project = projectDOM.textContent.trim();
 
-
   // pull description body
   var bodyDOM = document.getElementById("description-val");
   var body = bodyDOM.textContent.trim();
