@@ -62,13 +62,6 @@ app.post('/print', function (req, res, next) {
 
   // validate the ticket exists, and has the things we want
   var ticket = req.body;
-  if (ticket.project == undefined ||
-      ticket.title == undefined ||
-      ticket.number == undefined ||
-      ticket.body == undefined) {
-    throw Error("ticket is missing information");
-    next();
-  }
 
   // print the JSON
   printer
@@ -83,6 +76,10 @@ app.post('/print', function (req, res, next) {
     .bold(false)
     .lineFeed(1)
     .left(true)
+    .printLine("Author:    \t\t" + ticket.author)
+    .printLine("Created on:\t\t" + ticket.created)
+    .lineFeed(1)
+    .horizontalLine(32)
     .printLine(ticket.body)
     .lineFeed(7)
     .print(function() {});
