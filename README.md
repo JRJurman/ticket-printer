@@ -65,6 +65,9 @@ and reload the script on your client. For example:
 ],
 ```
 
+For more help with what matchers you can use, check out:
+https://developer.chrome.com/extensions/match_patterns
+
 ## Architecture Design
 ![Architecture Design](design/Point-of-Tickets-Architecture.png)
 
