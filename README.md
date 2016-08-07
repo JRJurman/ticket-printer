@@ -54,7 +54,16 @@ and see the fruits of your hard labor!
 
 If you want to use the other ticket builders (in the
 `extension/ticket-builders` folder) just add a matcher to the `manifest.json`
-and reload the script on your client.
+and reload the script on your client. For example:  
+```javascript
+"content_scripts": [
+  {
+    "matches": ["https://jira.potato-factory.com/*"],
+    "js": ["ticket-builders/jira.js"]
+  },
+  // .. other matchers
+],
+```
 
 ## Architecture Design
 ![Architecture Design](design/Point-of-Tickets-Architecture.png)
