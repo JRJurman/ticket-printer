@@ -52,6 +52,10 @@ error logs that might exist.
 If the dialog says "Server Ready!", then you can safely hit the "Print" button,
 and see the fruits of your hard labor!
 
+If you want to use the other ticket builders (in the
+`extension/ticket-builders` folder) just add a matcher to the `manifest.json`
+and reload the script on your client.
+
 ## Architecture Design
 ![Architecture Design](design/Point-of-Tickets-Architecture.png)
 
