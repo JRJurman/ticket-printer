@@ -82,7 +82,9 @@ app.post('/print', function (req, res, next) {
     .horizontalLine(32)
     .printLine(ticket.body)
     .lineFeed(7)
-    .print(function() {});
+    .print(function() {
+      res.sendStatus(204);
+    });
 
 });
 

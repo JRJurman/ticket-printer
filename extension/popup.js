@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       pingRequest.send();
 
       pingRequest.onload = function () {
-        if (pingRequest.status === 203) {
+        if (pingRequest.status === 204) {
           status.textContent = "Server Ready!";
         }
         else {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       printRequest.send(JSON.stringify(postTicket));
 
       printRequest.onload = function () {
-        if (pingRequest.status === 203) {
+        if (printRequest.status === 204) {
           status.textContent = "Printing!";
         }
         else {

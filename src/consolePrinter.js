@@ -11,7 +11,7 @@ var printer = {
   lineFeed: function(lines) {console.log("\n".repeat(lines)); return printer},
   left: function() {return printer},
   on: function(status, callback) {callback()},
-  print: function() {},
+  print: function(callback) {callback()},
   printLine: function(text) {console.log(text); return printer}
 };
 
