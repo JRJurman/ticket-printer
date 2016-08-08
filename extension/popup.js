@@ -42,11 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     status.textContent = "Loading ticket...";
 
-    // regardless of what page we're on, it'll be this function
+    // regardless of what page we're on, it'll be `scrapeTicket`
     var ticketCode = {code: "scrapeTicket()"};
 
     // build our ticket by executing "scrapeTicket()" on the active tab
     chrome.tabs.executeScript(undefined, ticketCode, function(ticket) {
+      if (ticket[0] === null) {
+        // classic mistake, and not obvious without some investigation
+        status.textContent = "Error... Did you update the manifest.json?";
+        return;
+      }
       var postTicket = ticket[0];
       status.textContent = "Sending ticket to server...";
 

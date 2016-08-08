@@ -12,7 +12,8 @@ var printer = {
   left: function() {return printer},
   on: function(status, callback) {callback()},
   print: function(callback) {callback()},
-  printLine: function(text) {console.log(text); return printer}
+  printLine: function(text) {console.log(text); return printer},
+  right: function() {return printer}
 };
 
 module.exports = printer;
