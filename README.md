@@ -1,7 +1,10 @@
-# Point of Tickets  
+# Ticket Printer  
 This project is a combination chrome extension and web server that allows
 users to print a ticket that they are looking at on their browser. The web
 server runs on a Tessel 2, which is connected to a Thermal Printer.
+
+**Looking for the old ticket printer?  
+Check it out here: https://github.com/jrjurman/modular-ticket-printer**
 
 ## Local Installation
 These are the steps to install and run the project on your local machine.
@@ -138,6 +141,6 @@ create a git issue, or fork the project and make a PR.
 
 ## Related Projects
 - Ticket Printer, a different approach to printing tickets:
-https://github.com/JRJurman/ticket-printer
+https://github.com/JRJurman/modular-ticket-printer
 - Tessel Thermal Printer, the inspiration for all of this:
 https://github.com/zaccolley/tessel-thermalprinter
