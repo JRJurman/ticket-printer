@@ -5,7 +5,7 @@
   "scripts": {
     "start": "t2 run webserver.js",
     "console": "node webserver.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node webserver.js test"
   },
   "repository": {
     "type": "git",
