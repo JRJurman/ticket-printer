@@ -5,7 +5,8 @@
   "scripts": {
     "start": "t2 run webserver.js",
     "console": "node webserver.js",
-    "test": "node webserver.js test"
+    "test": "node webserver.js test",
+    "push": "t2 push --full --usb webserver.js"
   },
   "repository": {
     "type": "git",

@@ -119,9 +119,10 @@ app.get('/ping', function(req, res) {
 // print endpoint that triggers a print
 app.post('/print', function (req, res, next) {
 
+  // throttle how many requests can come in from the same ip
   if (log.length > 0) {
     if (  (req.ip == log[log.length - 1].ip) &&
-          (((new Date) - (log[log.length - 1].timestamp)) < 5000)
+          (((new Date) - (log[log.length - 1].timestamp)) < 15000)
     ) {
       res.sendStatus(429);
       return;
@@ -137,16 +138,31 @@ app.post('/print', function (req, res, next) {
     return;
   }
 
+  // define the limits of each field
   const limits = {
     project: 30,
     number: 30,
     title: 30,
     author: 30,
     created: 30,
-    body: 2000
+    body: 30
   };
 
+  // translate the body into it's printed format, so that we can limit by lines
+  const lineBody = ticket.body.split('').reduce((realBody, character)=>{
+    if(character == '\n') {
+      return realBody.concat(['\n']);
+    }
+    if(realBody[realBody.length - 1].length >= 32) {
+      return realBody.concat([character])
+    }
+    return realBody.slice(0, -1).concat(realBody[realBody.length - 1].concat(character))
+  }, ['']).slice(0, limits.body).join('');
+
   const truncatedTicket = Object.keys(limits).reduce((tinyTicket, prop) => {
+    if (prop == 'body') {
+      return Object.assign({}, tinyTicket, {body: lineBody}); 
+    }
     if (tinyTicket[prop].length > limits[prop]) {
       return Object.assign(
         {}, tinyTicket,
@@ -197,7 +213,7 @@ app.get('/paranoia', function (req, res, next) {
 
   if (log.length > 0) {
     if (  (req.ip == log[log.length - 1].ip) &&
-          (((new Date) - (log[log.length - 1].timestamp)) < 5000)
+          (((new Date) - (log[log.length - 1].timestamp)) < 15000)
     ) {
       res.sendStatus(429);
       return;
@@ -215,6 +231,7 @@ app.get('/paranoia', function (req, res, next) {
               .left()
               .printLine(event.ip)
               .right()
+              .printLine(event.type)
               .printLine(event.timestamp);
   }, printer);
   queuedPrinter
